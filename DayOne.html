@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>I will make your decision for you!</title>
+</head>
+<body>
+	<a href = "#" class = "button" onclick = "randomMovie();"> Let's check movie</a>
+</body>
+
+<script>
+	var linkList = [
+		"https://www.imdb.com/title/tt2234155/",
+		"https://www.imdb.com/title/tt0388629/",
+		"https://www.imdb.com/title/tt1291584/",
+		"https://www.netflix.com/search?q=Korean&jbv=70202589&jbp=0&jbr=25"
+	];
+
+	function randomMovie()
+	{
+		var i = parseInt(Math.random() * linkList.length);
+		location.href = linkList[i];
+	};
+</script>
+</head>
+</html>

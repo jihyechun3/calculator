@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<style>
+.window_row{
+	width: 100%;
+    height: 20%;
+    border: 1px solid black; 
+}
+
+.main_container{
+	width: 350px;
+    height: 345px;
+    border: 1px solid black;
+
+    position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -150px 0 0 -170px;
+}
+
+.btn{
+	width: 100%;
+	height: 100%;
+}
+
+.calc-btn-div{
+	height:16.66%;
+}
+
+.calc-btn-group{
+	height: 80%;
+	width:100%;
+	margin:0;
+}
+</style>
+<body>
+	<form name="calculator">
+	<div class="main_container">
+		<div class="window_row">
+			<div class="input-group input-group-lg" style="height: 100%;">
+			  <input id="calc-input" type="text" class="form-control"style="height: 100%; width:100%" name="display">
+			</div>
+		</div><!-- answer box end -->
+
+		<div class="row calc-btn-group">
+			<div class="col-3">
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-primary">History</button>
+				</div><!--1st row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-secondary" onclick="calculator.display.value = '' ">C</button>
+				</div><!--2nd row end-->
+
+				<div class="row calc-btn-div">
+					<input type="button" value="7" name="7" class="btn btn-outline-success" onclick="calculator.display.value +='7' ">
+				</div><!--3rd row end-->
+
+				<div class="row calc-btn-div">
+					<input type="button" value="4"class="btn btn-outline-danger"  onclick="calculator.display.value += '4'">
+				</div><!--4rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-warning"  onclick="calculator.display.value +='1' ">1</button>
+				</div><!--5rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-info"  onclick="clickNum(this.textContent)">+/-</button>
+				</div><!--6rd row end-->
+			</div><!-- 1st col end -->
+
+			<div class="col-3">
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-primary"  onclick="clickNum(this.textContent)">Unit</button>
+				</div><!--1st row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-secondary"  onclick="clickNum(this.textContent)">( )</button>
+				</div><!--2nd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-success"  onclick="calculator.display.value +='8' ">8</button>
+				</div><!--3rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-danger"  onclick="calculator.display.value +='5' ">5</button>
+				</div><!--4rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-warning"  onclick="calculator.display.value +='2' ">2</button>
+				</div><!--5rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-info"  onclick="calculator.display.value +='0' ">0</button>
+				</div><!--6rd row end-->
+			</div><!-- 2nd col end -->
+
+			<div class="col-3">
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-primary"  onclick="clickNum(this.textContent)"> </button>
+				</div><!--1st row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-secondary"  onclick="calculator.display.value = (eval(calculator.display.value)/100)">%</button>
+				</div><!--2nd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-success"  onclick="calculator.display.value +='9' ">9</button>
+				</div><!--3rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-danger"  onclick="calculator.display.value +='6' ">6</button>
+				</div><!--4rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-warning"  onclick="calculator.display.value +='3' ">3</button>
+				</div><!--5rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-info"  onclick="calculator.display.value += '.' "> . </button>
+				</div><!--6rd row end-->
+			</div><!-- 3rd col end -->
+
+			<div class="col-3">
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-primary"  onclick="delete_all()">Delete</button>
+				</div><!--1st row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-secondary"  onclick="clickNum(this.textContent)">  /</button>
+				</div><!--2nd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" value="*" class="btn btn-outline-success"  onclick="calculator.display.value += '*'"> * </button>
+				</div><!--3rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-danger"  onclick="calculator.display.value += '-'"> - </button>
+								</div><!--4rd row end-->
+
+				<div class="row calc-btn-div">
+					<button type="button" class="btn btn-outline-warning"  onclick="calculator.display.value += '+'"> + </button>
+				</div><!--5rd row end-->
+
+				<div class="row calc-btn-div">
+					<input type="button" value="="class="btn btn-outline-info"  onclick="calculator.display.value = eval(calculator.display.value)">
+				</div><!--6rd row end-->
+			</div><!-- 4rd col end -->
+		</div>
+	</div><!---button main container end-->
+</form>
+</body>
+
+<script>
+	var pastOperator = "";
+	var pastNum = "";
+
+	function clickNum(num){
+		document.querySelector("#calc-input").value += num;
+	}
+
+	function delete_all(){
+		document.querySelector("#calc-input").value = "";
+	}
+	function clickOperator(operator){
+		pastOperator = operator;
+		pastNum = document.querySelector("#calc-input").value;
+		delete_all();
+	}
+
+</script>
+</html>
